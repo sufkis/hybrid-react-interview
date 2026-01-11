@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hybrid-react-interview/static/css/main.b14d7182.css",
+    "main.js": "/hybrid-react-interview/static/js/main.d03dd363.js",
+    "static/js/453.998d27a5.chunk.js": "/hybrid-react-interview/static/js/453.998d27a5.chunk.js",
+    "index.html": "/hybrid-react-interview/index.html",
+    "main.b14d7182.css.map": "/hybrid-react-interview/static/css/main.b14d7182.css.map",
+    "main.d03dd363.js.map": "/hybrid-react-interview/static/js/main.d03dd363.js.map",
+    "453.998d27a5.chunk.js.map": "/hybrid-react-interview/static/js/453.998d27a5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b14d7182.css",
+    "static/js/main.d03dd363.js"
+  ]
+}
