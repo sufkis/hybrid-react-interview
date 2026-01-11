@@ -44,6 +44,7 @@ Pagination is implemented at the container level so it can later be swapped for 
 The template engine is built as pure functions:
 - extractVariables() parses {variables} in real-time
 - buildPreview() generates a live final prompt
+
 To allow dynamic inputs, de-duplication, and safe handling of removed or renamed variables.
 
 #### Theming:
