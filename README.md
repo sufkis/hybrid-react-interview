@@ -2,45 +2,62 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Running the app
 
-In the project directory, you can run:
+After cloning the project to a local directory,
+Open cmd in that same directory and run the command:
 
-### `npm start`
+```bash
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+After installation is done, run:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm start
+```
 
-### `npm test`
+This should run the app.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Once the server is running, open your browser and navigate to `http://localhost:4200/`.
 
-### `npm run build`
+### Time Spent
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+~5.5 hours.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Architecture Desciosions:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Frontend stack:
+- React + TypeScript for type safety and scalable component design
+- Context API for global prompt state (CRUD + persistence)
+- LocalStorage as the persistence layer (no backend required)
+- CSS Variables + CSS Modules for themeable, component-scoped styling
 
-### `npm run eject`
+#### State Management:
+I kept global state minimal and focused only on prompt data (CRUD + persistence).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### UX & Scale
+Filtering, pagination, and preview logic are computed using memoized selectors in the Dashboard component.
+Pagination is implemented at the container level so it can later be swapped for virtualization if the prompt list grows large.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Template Engine
+The template engine is built as pure functions:
+- extractVariables() parses {variables} in real-time
+- buildPreview() generates a live final prompt
+To allow dynamic inputs, de-duplication, and safe handling of removed or renamed variables.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Theming
+Dark/Light mode is handled using CSS variables and a global theme toggle stored in LocalStorage.
+This allows the entire UI (header, lists, modal, inputs, preview) to change theme without rewriting component styles.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### One thing I would improve with more time
 
-## Learn More
+I would improve the Loading... text with something more "alive" like an animation.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Any assumptions I made
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Prompts would have id, title, category, template.
+2. Categories are a predefined enum (Coding/Writing/Marketing/Other).
+3. Variables would be detected using single braces {}; whitespace inside braces is trimmed, duplicates would produce a single input, and preview replaces variables with current input values (missing values are treated as empty and flagged with validation).
+4. Search applies to title + template and combines with category filter using AND.
+5. Data is persisted in LocalStorage and the app simulates loading (≈400ms) on initial load and on mutations for better UX.
