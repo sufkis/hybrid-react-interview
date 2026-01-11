@@ -25,7 +25,7 @@ Once the server is running, open your browser and navigate to `http://localhost:
 
 ~5.5 hours.
 
-### Architecture Desciosions:
+### Architecture Desciosions
 
 #### Frontend stack:
 - React + TypeScript for type safety and scalable component design
@@ -36,17 +36,17 @@ Once the server is running, open your browser and navigate to `http://localhost:
 #### State Management:
 I kept global state minimal and focused only on prompt data (CRUD + persistence).
 
-#### UX & Scale
+#### UX & Scale:
 Filtering, pagination, and preview logic are computed using memoized selectors in the Dashboard component.
 Pagination is implemented at the container level so it can later be swapped for virtualization if the prompt list grows large.
 
-#### Template Engine
+#### Template Engine:
 The template engine is built as pure functions:
 - extractVariables() parses {variables} in real-time
 - buildPreview() generates a live final prompt
 To allow dynamic inputs, de-duplication, and safe handling of removed or renamed variables.
 
-#### Theming
+#### Theming:
 Dark/Light mode is handled using CSS variables and a global theme toggle stored in LocalStorage.
 This allows the entire UI (header, lists, modal, inputs, preview) to change theme without rewriting component styles.
 
