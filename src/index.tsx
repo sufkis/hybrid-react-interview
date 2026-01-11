@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { PromptsProvider } from './contexts/PromptsContext';
+import "./styles/theme.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <PromptsProvider>
+      <App />
+    </PromptsProvider>
   </React.StrictMode>
 );
 

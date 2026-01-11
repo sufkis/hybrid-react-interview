@@ -1,0 +1,10 @@
+.toolbar {
+    display: flex;
+    gap: 8px;
+    padding: 16px;
+}
+
+.loading {
+    margin-top: 60px;
+    text-align: center;
+}
