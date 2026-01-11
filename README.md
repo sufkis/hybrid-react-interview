@@ -19,7 +19,7 @@ npm start
 
 This should run the app.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`.
+Once the server is running, open your browser and navigate to `http://localhost:3000/`.
 
 ### Time Spent
 
